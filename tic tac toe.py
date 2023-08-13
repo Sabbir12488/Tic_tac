@@ -2,6 +2,7 @@ import os
 import random
 
 class perameters(object):
+    game_over = False
     grid_size = 7
     spacing = grid_size - 4
     def creat_grid():
@@ -28,8 +29,7 @@ O = 'O'
 x_won = 'X WON!!!'
 o_won = 'O WON!!!'
 
-global game_over
-game_over = False
+
 
 
 perameters.creat_grid()
@@ -43,52 +43,68 @@ perameters.creat_grid()
         
 
 def game_state():
-
     ## to check if X won
     if set(values[0:3]) == {X}:
-        print(x_won)
+        print(x_won)  
+        perameters.game_over = True    
     elif set(values[3:6]) == {X}:
         print(x_won)
+        perameters.game_over = True
     elif set(values[6:9]) == {X}:
         print(x_won)
+        perameters.game_over = True
     elif values[0] == X and values[3] == X and values[6] == X:
         print(x_won)
+        perameters.game_over = True
     elif values[0] == X and values[4] == X and values[8] == X:
         print(x_won)
+        perameters.game_over = True
     elif values[0] == X and values[4] == X and values[8] == X:
         print(x_won)
+        perameters.game_over = True
     elif values[2] == X and values[5] == X and values[8] == X:
         print(x_won)
+        perameters.game_over = True
     elif values[2] == X and values[4] == X and values[6] == X:
         print(x_won)
+        perameters.game_over = True
     elif values[1] == X and values[4] == X and values[7] == X:
         print(x_won)  
+        perameters.game_over = True
 
     ## To check if O won
     if set(values[0:3]) == {O}:
         print(o_won)
+        perameters.game_over = True
     elif set(values[3:6]) == {O}:
         print(o_won)
+        perameters.game_over = True
     elif set(values[6:9]) == {O}:
         print(o_won)
+        perameters.game_over = True
     elif values[0] == O and values[3] == O and values[6] == O:
         print(o_won)
+        perameters.game_over = True
     elif values[0] == O and values[4] == O and values[8] == O:
         print(o_won)
+        perameters.game_over = True
     elif values[0] == O and values[4] == O and values[8] == O:
         print(o_won)
+        perameters.game_over = True
     elif values[2] == O and values[5] == O and values[8] == O:
         print(o_won)
+        perameters.game_over = True
     elif values[2] == O and values[4] == O and values[6] == O:
         print(o_won)
+        perameters.game_over = True
     elif values[1] == O and values[4] == O and values[7] == O:
         print(o_won)
-
+        perameters.game_over = True
 
 
 def Game():
     turns = False
-    while ' ' in values and not game_over:
+    while ' ' in values and not perameters.game_over:
         if not turns:
             command = int(input('Press 1 through 9 [ X ]: '))
             turns = True

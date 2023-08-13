@@ -1,13 +1,6 @@
 import os
 import random
 
-values = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-
-command = 0
-
-X = 'X'
-O = 'O'
-
 class perameters(object):
     grid_size = 7
     spacing = grid_size - 4
@@ -25,31 +18,99 @@ class perameters(object):
                 print('_'*perameters.grid_size + '|' + '_'*perameters.grid_size + '|'+'_'*perameters.grid_size)
 
 
+values = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+
+command = 0
+
+X = 'X'
+O = 'O'
+
+x_won = 'X WON!!!'
+o_won = 'O WON!!!'
+
+global game_over
+game_over = False
+
+
 perameters.creat_grid()
 
 
-def AI():
-    if values[2] == X:
-        if random.randint(1, 100) < 70 and values[4] == ' ':
-            values[4] = O
-        else:
-            values[3] = O
+#def AI():
+#    if random.randint(1, 100) < 70 and values[4] == ' ':
+#        values[4] = O
+#    else:
+#        values[3] = O
         
 
+def game_state():
+
+    ## to check if X won
+    if set(values[0:3]) == {X}:
+        print(x_won)
+    elif set(values[3:6]) == {X}:
+        print(x_won)
+    elif set(values[6:9]) == {X}:
+        print(x_won)
+    elif values[0] == X and values[3] == X and values[6] == X:
+        print(x_won)
+    elif values[0] == X and values[4] == X and values[8] == X:
+        print(x_won)
+    elif values[0] == X and values[4] == X and values[8] == X:
+        print(x_won)
+    elif values[2] == X and values[5] == X and values[8] == X:
+        print(x_won)
+    elif values[2] == X and values[4] == X and values[6] == X:
+        print(x_won)
+    elif values[1] == X and values[4] == X and values[7] == X:
+        print(x_won)  
+
+    ## To check if O won
+    if set(values[0:3]) == {O}:
+        print(o_won)
+    elif set(values[3:6]) == {O}:
+        print(o_won)
+    elif set(values[6:9]) == {O}:
+        print(o_won)
+    elif values[0] == O and values[3] == O and values[6] == O:
+        print(o_won)
+    elif values[0] == O and values[4] == O and values[8] == O:
+        print(o_won)
+    elif values[0] == O and values[4] == O and values[8] == O:
+        print(o_won)
+    elif values[2] == O and values[5] == O and values[8] == O:
+        print(o_won)
+    elif values[2] == O and values[4] == O and values[6] == O:
+        print(o_won)
+    elif values[1] == O and values[4] == O and values[7] == O:
+        print(o_won)
+
+
+
 def Game():
-
-    while ' ' in values:
-        command = int(input('Press 1 through 9: '))
-
-        if command and values[command - 1] == ' ':
-            values[command - 1] = X
-            ## AI
-            AI()
-
-            os.system('cls')
-            perameters.creat_grid()
+    turns = False
+    while ' ' in values and not game_over:
+        if not turns:
+            command = int(input('Press 1 through 9 [ X ]: '))
+            turns = True
+            if command and values[command - 1] == ' ':
+                values[command - 1] = X
+                ## AI
+                os.system('cls')
+                perameters.creat_grid()
+                game_state()
+            else:
+                print('Wrong command!! Try again')
         else:
-            print('Wrong command!! Try again')
+            command = int(input('Press 1 through 9 [ O ]: '))
+            turns = False
+            if command and values[command - 1] == ' ':
+                values[command - 1] = O
+                ## AI
+                os.system('cls')
+                perameters.creat_grid()
+                game_state()
+            else:
+                print('Wrong command!! Try again')
 
 Game()        
 

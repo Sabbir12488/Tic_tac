@@ -55,8 +55,10 @@ os.system('cls')
 def player_name():
     global p_1_d, p_2_d, x_won, o_won
 
-    player_1 = input("Name (player_1): ")
-    player_2 = input("Name (player_2): ")
+    player_1 = input("Name (player_1): " + Fore.LIGHTCYAN_EX)
+    print(Fore.RESET)
+    player_2 = input("Name (player_2): " + Fore.LIGHTRED_EX)
+    print(Fore.RESET)
 
     p_1_d = player_1.upper()[:3]
     p_2_d = player_2.upper()[:3]

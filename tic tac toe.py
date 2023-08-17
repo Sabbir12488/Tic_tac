@@ -1,5 +1,10 @@
 import os
-import random
+from colorama import Back, Fore, Style, init
+
+
+print(Fore.RESET)
+
+init(autoreset=True)
 
 class perameters(object):
     game_over = False
@@ -7,29 +12,29 @@ class perameters(object):
     spacing = grid_size - 4
     def creat_grid():
         print('-----------------------')
-        print('{}    [X] | [O]    {}'.format(p_1_d, p_2_d))
+        print(Fore.LIGHTCYAN_EX +'{}'.format(p_1_d) + Fore.RESET + '    [X] | [O]    ' + Fore.LIGHTRED_EX + '{}'.format(p_2_d))
         print('-----------------------\n')
 
         for l in range(perameters.grid_size):  
             if l == 1:       
-                print(' '*perameters.spacing + "{}".format(cells[0])+ ' '*perameters.spacing +'|' + ' '*perameters.spacing + "{}".format(cells[1]) + ' '*perameters.spacing + '|' + ' '*perameters.spacing + "{}".format(cells[2]))
+                print(Fore.LIGHTYELLOW_EX +' '*perameters.spacing + "{}".format(cells[0])+ ' '*perameters.spacing +'|' + ' '*perameters.spacing + "{}".format(cells[1]) + ' '*perameters.spacing + '|' + ' '*perameters.spacing + "{}".format(cells[2]))
             elif l == 3:
-                print(' '*perameters.spacing + "{}".format(cells[3])+ ' '*perameters.spacing +'|' + ' '*perameters.spacing + "{}".format(cells[4]) + ' '*perameters.spacing + '|' + ' '*perameters.spacing + "{}".format(cells[5]))
+                print(Fore.LIGHTYELLOW_EX +' '*perameters.spacing + "{}".format(cells[3])+ ' '*perameters.spacing +'|' + ' '*perameters.spacing + "{}".format(cells[4]) + ' '*perameters.spacing + '|' + ' '*perameters.spacing + "{}".format(cells[5]))
             elif l == 5:
-                print(' '*perameters.spacing + "{}".format(cells[6])+ ' '*perameters.spacing +'|' + ' '*perameters.spacing + "{}".format(cells[7]) + ' '*perameters.spacing + '|' + ' '*perameters.spacing + "{}".format(cells[8]))
+                print(Fore.LIGHTYELLOW_EX +' '*perameters.spacing + "{}".format(cells[6])+ ' '*perameters.spacing +'|' + ' '*perameters.spacing + "{}".format(cells[7]) + ' '*perameters.spacing + '|' + ' '*perameters.spacing + "{}".format(cells[8]))
             elif l == 6:
-                print(' '*perameters.grid_size + '|' + ' '*perameters.grid_size + '|'+' '*perameters.grid_size + '\n')
+                print(Fore.LIGHTYELLOW_EX +' '*perameters.grid_size + '|' + ' '*perameters.grid_size + '|'+' '*perameters.grid_size + '\n')
             else:
-                print(' '*perameters.grid_size + '|' + ' '*perameters.grid_size + '|'+' '*perameters.grid_size)
+                print(Fore.LIGHTYELLOW_EX +' '*perameters.grid_size + '|' + ' '*perameters.grid_size + '|'+' '*perameters.grid_size)
             if l == 1 or l == 3:
-                print('_'*perameters.grid_size + '|' + '_'*perameters.grid_size + '|'+'_'*perameters.grid_size)          
+                print(Fore.LIGHTYELLOW_EX +'_'*perameters.grid_size + '|' + '_'*perameters.grid_size + '|'+'_'*perameters.grid_size)          
 
 cells = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
 command = 0
 
-X = 'X'
-O = 'O'
+X = Fore.LIGHTCYAN_EX + 'X' + Fore.LIGHTYELLOW_EX
+O = Fore.LIGHTRED_EX + 'O' + Fore.LIGHTYELLOW_EX
 
 
 x_won = ''
@@ -39,9 +44,9 @@ p_2_d = ''
 
 
 os.system('cls')
-print('-----------------------------------------')
-print('||            tic tac toe              ||')
-print('-----------------------------------------\n')
+print(Fore.LIGHTMAGENTA_EX + '-----------------------------------------')
+print(Fore.LIGHTRED_EX + '||            '+ Fore.LIGHTGREEN_EX +'TIC TAC TOE'+ Fore.RESET + Fore.LIGHTRED_EX + '              ||')
+print(Fore.LIGHTMAGENTA_EX + '-----------------------------------------\n')
 input("Press Enter to continue...")
 os.system('cls')
 
@@ -70,8 +75,8 @@ def player_name():
 
         
 
-    x_won = str(player_1.strip()) + ' won\n'
-    o_won = str(player_2.strip()) + ' won\n'
+    x_won = Fore.LIGHTCYAN_EX + str(player_1.strip()) + Fore.RESET + ' wins!!!\n'
+    o_won = Fore.LIGHTRED_EX + str(player_2.strip()) + Fore.RESET + ' wins!!!\n'
     os.system('cls')
 
 
@@ -161,7 +166,7 @@ def Game():
     turns = False
     while ' ' in cells and not perameters.game_over:
         if not turns:
-            command = input('Press 1 through 9 [{}]: '.format(p_1_d)).strip()
+            command = input('Press 1 through 9 ['+ Fore.LIGHTCYAN_EX +'{}'.format(p_1_d) + Fore.RESET + ']: ').strip()
             turns = True
             if command.strip().isnumeric() and cells[int(command[0].strip()) - 1] == ' ':
                 cells[int(command[0].strip()) - 1] = X
@@ -175,7 +180,7 @@ def Game():
                 print('Wrong command!! Try again')
                 turns = False
         else:
-            command = input('Press 1 through 9 [{}]: '.format(p_2_d)).strip()
+            command = input('Press 1 through 9 ['+ Fore.LIGHTRED_EX +'{}'.format(p_2_d) + Fore.RESET + ']: ').strip()
             turns = False
             if command.strip().isnumeric() and cells[int(command[0].strip()) - 1] == ' ':
                 cells[int(command[0].strip()) - 1] = O

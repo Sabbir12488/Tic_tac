@@ -34,6 +34,9 @@ O = 'O'
 
 x_won = ''
 o_won = ''
+p_1_d = ''
+p_2_d = ''
+
 
 os.system('cls')
 print('-----------------------------------------')
@@ -43,30 +46,34 @@ input("Press Enter to continue...")
 os.system('cls')
 
 
-## Player name
-player_1 = input("Name (player_1): ")
-player_2 = input("Name (player_2): ")
 
-p_1_d = player_1.upper()[:3]
-p_2_d = player_2.upper()[:3]
+def player_name():
+    global p_1_d, p_2_d, x_won, o_won
 
-if len(player_1) != 0 and len(player_1) < 3:
-    p_1_d = player_1.upper() + ' '.ljust(3 - len(player_1))
-elif player_1.strip() == "":
-    p_1_d = 'P_1'
-    player_1 = 'P_1'
+    player_1 = input("Name (player_1): ")
+    player_2 = input("Name (player_2): ")
 
-if len(player_2) != 0 and len(player_2) < 3:
-    p_2_d = ' '.ljust(3 - len(player_2)) + player_2.upper()
-elif player_2.strip() == "":
-    p_2_d = 'P_2'
-    player_2 = 'P_2'
+    p_1_d = player_1.upper()[:3]
+    p_2_d = player_2.upper()[:3]
 
-    
+    if len(player_1) != 0 and len(player_1) < 3:
+        p_1_d = player_1.upper() + ' '.ljust(3 - len(player_1))
+    elif player_1.strip() == "":
+        p_1_d = 'P_1'
+        player_1 = 'P_1'
 
-x_won = str(player_1.strip()) + ' won\n'
-o_won = str(player_2.strip()) + ' won\n'
-os.system('cls')
+    if len(player_2) != 0 and len(player_2) < 3:
+        p_2_d = ' '.ljust(3 - len(player_2)) + player_2.upper()
+    elif player_2.strip() == "":
+        p_2_d = 'P_2'
+        player_2 = 'P_2'
+
+        
+
+    x_won = str(player_1.strip()) + ' won\n'
+    o_won = str(player_2.strip()) + ' won\n'
+    os.system('cls')
+
 
 #def AI():
 
@@ -148,7 +155,7 @@ def game_state():
         game_over()
 
 def Game():
-
+    player_name()
     perameters.creat_grid()
 
     turns = False

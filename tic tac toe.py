@@ -51,7 +51,7 @@ input("Press Enter to continue...")
 os.system('cls')
 
 
-
+## Player name and score
 def player_name():
     global p_1_d, p_2_d, x_won, o_won
 

@@ -1,7 +1,7 @@
 import os
 from colorama import Back, Fore, Style, init
 
-
+##sets color
 print(Fore.RESET)
 
 init(autoreset=True)
